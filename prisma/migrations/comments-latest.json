@@ -1,0 +1,101 @@
+{
+  "customers": {
+    "table": {
+      "tableName": "customers",
+      "comment": "Customer"
+    },
+    "columns": [
+      {
+        "tableName": "customers",
+        "columnName": "customer_id",
+        "comment": "Customer ID"
+      },
+      {
+        "tableName": "customers",
+        "columnName": "name",
+        "comment": "Customer Name"
+      },
+      {
+        "tableName": "customers",
+        "columnName": "email",
+        "comment": "e-mail"
+      },
+      {
+        "tableName": "customers",
+        "columnName": "created_at",
+        "comment": ""
+      }
+    ]
+  },
+  "products": {
+    "table": {
+      "tableName": "products",
+      "comment": "Product"
+    },
+    "columns": [
+      {
+        "tableName": "products",
+        "columnName": "product_id",
+        "comment": "Product ID"
+      },
+      {
+        "tableName": "products",
+        "columnName": "name",
+        "comment": "Product Name"
+      },
+      {
+        "tableName": "products",
+        "columnName": "description",
+        "comment": "Product Description"
+      },
+      {
+        "tableName": "products",
+        "columnName": "price",
+        "comment": "Price"
+      },
+      {
+        "tableName": "products",
+        "columnName": "created_at",
+        "comment": ""
+      }
+    ]
+  },
+  "sales": {
+    "table": {
+      "tableName": "sales",
+      "comment": "Sale"
+    },
+    "columns": [
+      {
+        "tableName": "sales",
+        "columnName": "sale_id",
+        "comment": "Sale ID"
+      },
+      {
+        "tableName": "sales",
+        "columnName": "customer_id",
+        "comment": "Customer ID"
+      },
+      {
+        "tableName": "sales",
+        "columnName": "product_id",
+        "comment": "Product ID"
+      },
+      {
+        "tableName": "sales",
+        "columnName": "quantity",
+        "comment": "Quantity"
+      },
+      {
+        "tableName": "sales",
+        "columnName": "total_price",
+        "comment": "Total Price"
+      },
+      {
+        "tableName": "sales",
+        "columnName": "created_at",
+        "comment": ""
+      }
+    ]
+  }
+}

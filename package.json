@@ -1,0 +1,27 @@
+{
+  "name": "prisma-testcontainers-sample",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "db:migrate": "prisma-schema-fixer && prisma migrate dev && prisma generate && npm run db:deploy",
+    "db:reset": "prisma migrate reset",
+    "db:deploy": "prisma migrate deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@onozaty/prisma-db-comments-generator": "^1.1.0",
+    "@onozaty/prisma-schema-fixer": "^0.2.0",
+    "@types/node": "^22.14.1",
+    "prisma": "^6.6.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "@prisma/client": "6.6.0"
+  }
+}
