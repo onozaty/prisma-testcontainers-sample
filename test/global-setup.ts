@@ -28,7 +28,9 @@ export const teardown = () => {
 };
 
 const setupTestDatabaseContainer = async (workerId: number) => {
-  const container = await new PostgreSqlContainer("postgres:latest").start();
+  const container = await new PostgreSqlContainer("postgres:latest")
+    .withTmpFs({ "/var/lib/postgresql/data": "rw" })
+    .start();
 
   // DATABASE_URLを作成
   const databaseUrl = `postgresql://${container.getUsername()}:${container.getPassword()}@${container.getHost()}:${container.getMappedPort(
