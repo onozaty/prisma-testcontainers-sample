@@ -5,5 +5,8 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./test/setup.ts"],
     hookTimeout: 600000, // Testcontainerの起動に初回は時間がかかる可能性があるため
+    minWorkers: 4,
+    maxWorkers: 4,
+    isolate: false, // TestcontainerがWorker内で使いまわされるように
   },
 });

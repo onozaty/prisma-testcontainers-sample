@@ -1,14 +1,20 @@
 import { PostgreSqlContainer } from "@testcontainers/postgresql";
 import { execSync } from "child_process";
 
-const container = await new PostgreSqlContainer("postgres:latest").start();
+console.log("setup.ts 起動: PID", process.pid);
 
-// DATABASE_URLを作成
-const databaseUrl = `postgresql://${container.getUsername()}:${container.getPassword()}@${container.getHost()}:${container.getMappedPort(
-  5432
-)}/${container.getDatabase()}`;
+if (!(globalThis as any).__testContainer__) {
+  const container = await new PostgreSqlContainer("postgres:latest").start();
 
-process.env.DATABASE_URL = databaseUrl;
-console.log(`Testcontainer起動完了 DATABASE_URL: ${databaseUrl}`);
+  // DATABASE_URLを作成
+  const databaseUrl = `postgresql://${container.getUsername()}:${container.getPassword()}@${container.getHost()}:${container.getMappedPort(
+    5432
+  )}/${container.getDatabase()}`;
 
-execSync(`npx prisma migrate deploy`);
+  process.env.DATABASE_URL = databaseUrl;
+  console.log(`Testcontainer起動完了 DATABASE_URL: ${databaseUrl}`);
+
+  execSync(`npx prisma migrate deploy`);
+
+  (globalThis as any).__testContainer__ = container;
+}
