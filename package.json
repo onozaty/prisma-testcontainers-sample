@@ -15,6 +15,7 @@
   "devDependencies": {
     "@onozaty/prisma-db-comments-generator": "^1.1.0",
     "@onozaty/prisma-schema-fixer": "^0.2.0",
+    "@testcontainers/postgresql": "^10.24.2",
     "@types/node": "^22.14.1",
     "prisma": "^6.6.0",
     "tsx": "^4.19.3",

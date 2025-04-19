@@ -11,7 +11,13 @@
         "dbaeumer.vscode-eslint",
         "Prisma.prisma",
         "vitest.explorer"
-      ]
+      ],
+      "settings": {
+        "dev.containers.dockerCredentialHelper": false
+      }
     }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   }
 }
