@@ -11,20 +11,23 @@ export const setup = async (project: TestProject) => {
   // Worker数分Testcontainerを立ち上げる
   const promises: Promise<StartedPostgreSqlContainer>[] = [];
 
+  console.log("Testcontainer起動開始");
   for (let i = 1; i <= project.config.maxWorkers; i++) {
     // 1から振っていく(process.env.VITEST_POOL_ID と一致するように)
     promises.push(setupTestDatabaseContainer(i));
   }
 
   containers = await Promise.all(promises);
+  console.log("Testcontainer起動完了");
 };
 
 export const teardown = () => {
-  console.log("Testcontainer停止");
+  console.log("Testcontainer停止開始");
   // Testcontainerを停止する
   for (const container of containers) {
     container.stop();
   }
+  console.log("Testcontainer停止完了");
 };
 
 const setupTestDatabaseContainer = async (workerId: number) => {
@@ -38,9 +41,7 @@ const setupTestDatabaseContainer = async (workerId: number) => {
   )}/${container.getDatabase()}`;
 
   execSync(`DATABASE_URL=${databaseUrl} npx prisma migrate deploy`);
-  console.log(
-    `Testcontainer起動完了(workerId:${workerId}) DATABASE_URL: ${databaseUrl}`
-  );
+  console.log(`(workerId:${workerId}) DATABASE_URL: ${databaseUrl}`);
 
   process.env[`DATABASE_URL_TEST_${workerId}`] = databaseUrl;
 

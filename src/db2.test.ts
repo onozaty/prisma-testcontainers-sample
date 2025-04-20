@@ -1,9 +1,4 @@
-import { resetDb } from "../test/testdb";
 import { prisma } from "./db";
-
-beforeEach(async () => {
-  await resetDb();
-});
 
 test("test1-1", async () => {
   const created = await prisma.customer.create({
