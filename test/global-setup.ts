@@ -32,6 +32,7 @@ export const teardown = () => {
 
 const setupTestDatabaseContainer = async (workerId: number) => {
   const container = await new PostgreSqlContainer("postgres:latest")
+    // データファイルをtmpfs(メモリ上)に保存することで高速化
     .withTmpFs({ "/var/lib/postgresql/data": "rw" })
     .start();
 

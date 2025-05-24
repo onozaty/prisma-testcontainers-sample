@@ -21,6 +21,8 @@ const resetDb = async () => {
 
   const tables = tablenames
     .map(({ tablename }) => tablename)
+    // _prisma_migrationsはマイグレーションの履歴テーブルなので除外
+    // 他にも除外したいテーブルがあればここに追加
     .filter((name) => name !== "_prisma_migrations")
     .map((name) => `"public"."${name}"`)
     .join(", ");
