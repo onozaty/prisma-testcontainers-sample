@@ -21,12 +21,11 @@ export const setup = async (project: TestProject) => {
   console.log("Testcontainer起動完了");
 };
 
-export const teardown = () => {
+export const teardown = async () => {
   console.log("Testcontainer停止開始");
+
   // Testcontainerを停止する
-  for (const container of containers) {
-    container.stop();
-  }
+  await Promise.all(containers.map((container) => container.stop()));
   console.log("Testcontainer停止完了");
 };
 
